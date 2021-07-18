@@ -1,0 +1,156 @@
+:root {
+    --color: #47479b;
+    color: #445544;
+}
+
+.panel:nth-child(2) {
+    --color: red;
+}
+
+.panel:nth-child(3) {
+    --color: green;
+}
+
+.panel:nth-child(4) {
+    --color: blue;
+}
+
+.panels {
+    display: flex;
+    /* float: inline-start; */
+    justify-content: center;
+    padding: 40px;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.panel {
+    position: relative;
+    transition: all .8s;
+}
+
+.panel:hover .page1 {
+    margin-left: 0;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    -webkit-transform: rotate3d(0, 1, 0, -180deg);
+    -moz-transform: rotate3d(0, 1, 0, -180deg);
+    transform: rotate3d(0, 1, 0, -180deg);
+    transition: -webkit-transform 0.8s ease-in-out;
+    transition: -moz-transform 0.8s ease-in-out;
+    transition: transform 0.8s ease-in-out;
+}
+
+[class^="page"] {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+}
+
+.page1 {
+    position: absolute;
+    transform-origin: left;
+    background: var(--color);
+    float: left;
+    background-image: url('./image/on.jpg');
+    perspective: 700px;
+    z-index: 1;
+    background-position: center;
+    transition: all .8s;
+    box-shadow: 0px 10px 20px black;
+}
+
+.page2 {
+    float: left;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    backface-visibility: hidden;
+}
+
+.back {
+    overflow: hidden;
+    /* background-color: var(--color); */
+    background-image: url('./image/on.jpg');
+
+}
+
+.front {
+    background: white;
+}
+
+.front::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* background: var(--color); */
+    background-position: center;
+    background-image: url('./image/on.jpg');
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%);
+}
+
+h1 {
+    flex-basis: 100%;
+    margin: 0;
+    padding: 14px 26px 4px;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    background: var(--color);
+    color: white;
+}
+
+p {
+    padding: 16px 16px;
+    margin: 0;
+    font-size: 0.875em;
+    line-height: 1.4;
+}
+
+p+p {
+    padding-top: 4px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 0.857em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color);
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 800px;
+    background-image: url('./image/bg.jpg');
+    background-position: center;
+}
+
+li {
+    width: 200px;
+    height: 200px;
+    list-style: none;
+    margin-right: 200px;
+}
