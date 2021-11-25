@@ -1,0 +1,61 @@
+/* header css */
+.header-c{
+    height: 40px;
+    background-color: #F9F9FB;
+}
+/* header 左侧导航 */
+.header-c ul li{
+    float: left;
+}
+.header-c ul li a{
+    height: 40px;
+    padding: 20px 22.5px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.header-c ul li a.first-nav{
+    padding-left: 60px;
+}
+/* header 右侧 */
+.header-c .header-right a{
+    float: right;
+    height: 40px;
+    padding: 0 22.5px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.header-c .header-right a.register{
+    padding-right: 60px;
+}
+.header-c .header-right .collect{
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 93px;
+}
+.header-c .header-right .triangle{
+    position: absolute;
+    top: 13.5px;
+    right: 54px;
+    height: 0px;
+    width: 0px;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid #E62A4F;
+    border-bottom: 5px solid transparent;
+}
+.header-c .header-right .new{
+    position: absolute;
+    top: 12px;
+    right: 23px;
+    height: 13px;
+    width: 32px;
+    border-radius: 2px;
+    line-height: 13px;
+    text-align: center;
+    font-size: 6px;
+    color: #FFFFFF;
+    background-color: #E62A4F;
+}

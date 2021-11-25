@@ -1,0 +1,10 @@
+a {
+    color: #535353;
+    text-decoration: none;
+}
+
+/* 公共样式 */
+.inner-c {
+    width: 1366px;
+    margin: 0 auto;
+  }

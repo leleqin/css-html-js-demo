@@ -1,0 +1,101 @@
+/* 手机分类 */
+.banner-c .phone-sort .logo{
+    float: left;
+    margin-top: 30px;
+    margin-right: 130px;
+    margin-left: 60px;
+}
+.banner-c .phone-sort .logo a{
+    display: block;
+    width: 115px;
+    height: 20px;
+    text-align: center;
+    background: url('../images/logo.png') no-repeat 0 0;
+    text-indent: -999em;
+    overflow: hidden;
+}
+.banner-c .phone-sort .sort-nav li{
+    float: left;
+    height: 80px;
+    padding: 0 18px;
+    line-height: 80px;
+    text-align: center;
+    color: #262626;
+}
+/* banner区域 */
+.banner-c .banner{
+    position: relative;
+    width: 100%;
+    height: 480px;
+    padding: 0;
+    overflow: hidden;
+}
+/* 轮播图 */
+.banner-c .banner ul li a img{
+    position: absolute;
+    width: 1366px;
+    height: 482px;
+    right: 0;
+}
+/* 商品分类 */
+.banner-c .banner .classify{
+    position: absolute;
+    width: 214px;
+    height: 480px;
+    margin-left: 60px;
+    padding-left: 30px;
+    background-color: #DED3F7;
+}
+.banner-c .banner .classify a{
+    float: left;
+    display: block;
+    width: 244px;
+    height: 56px;
+    font-size: 14px;
+    color: #2C2C2C;
+    line-height: 56px;
+    text-align: left center;
+}
+.banner-c .banner .classify a.all-good {
+    padding-top: 12.5px;
+}
+.banner-c .banner .btn span{
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -13px;
+}
+/* 左箭头 */
+.banner-c .banner .btn span.btn-left{
+    left: 334px;
+    background: url('../images/gotop-arrow.png') no-repeat center center;
+    transform: rotate(-90deg);
+}
+/* 右箭头 */
+.banner-c .banner .btn span.btn-right{
+    right: 60px;
+    background: url('../images/gotop-arrow.png') no-repeat center center;
+    transform: rotate(90deg);
+}
+/* 圆点 */
+.banner-c .banner ol{
+    position: absolute;
+    bottom: 9px;
+    left: 50%;
+    margin-left: 120px;
+}
+.banner-c .banner ol li{
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+    border-radius: 12px;
+    border: 1px solid #B3B3B3;
+}
+.banner-c .banner ol li.current{
+    width: 14px;
+    height: 14px;
+    border: none;
+    background-color: #17B6F3;
+}

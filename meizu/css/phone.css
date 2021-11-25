@@ -1,0 +1,105 @@
+/* 手机区域 */
+.phone-c {
+    position: relative;
+    width: 1246px;
+    height: 470px;
+    padding: 0 60px;
+    background-color: #F2F2F2;
+    overflow: hidden;
+}
+.phone-c .title {
+    width: 1246px;
+    height: 72px;
+    margin-top: 22px;
+}
+.phone-c .title h3{
+    float: left;
+    width: 48px;
+    height: 72px;
+    line-height: 72px;
+    text-align: center;
+    font-size: 24px;
+    color: #262626;
+}
+.phone-c .title span.more{
+    float: right;
+    display: block;
+    height: 72px;
+    color: #262626;
+    font-size: 12px;
+    line-height: 72px;
+    text-align: center;
+}
+.phone-c .title i{
+    float: right;
+    height: 72px;
+    color: #BEBEBE;
+    font-size: 12px;
+    line-height: 72px;
+    text-align: center;
+}
+/* 手机内容 */
+.phone-c .phone-content{
+    width: 1246px;
+    height: 338px;
+}
+.phone-c .phone-content li{
+    float: left;
+    margin-right: 6px;
+    width: 244px;
+    height: 338px;
+    background-color: #FFFFFF;
+}
+.phone-c .phone-content li .top{
+    position: relative;
+    width: 244px;
+    height: 206px;
+    margin-bottom: 40px;
+}
+.phone-c .phone-content li .top img{
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -90px;
+}
+.phone-c .phone-content li .top i{
+    position: absolute;
+    top:15px;
+    right: 15px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    color: #FBF3F5;
+    background-color: #F08337;
+}
+.phone-c .phone-content li .top i.discount{
+    background-color: #E9284D;
+}
+.phone-c .phone-content li h4{
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #434545;
+}
+.phone-c .phone-content li .sale-time{
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    color: #878787;
+}
+.phone-c .phone-content li .sale-price{
+    width: 100%;
+    padding-top: 2px;
+    font-size: 18px;
+    text-align: center;
+    color: #D61232;
+}
+.phone-c .phone-content .last-phone{
+    margin: 0;
+}
+

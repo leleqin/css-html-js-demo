@@ -1,0 +1,117 @@
+/* 内容-服务功能 */
+.content-c {
+    width: 100%;
+    height: 175px;
+    padding-left: 60px;
+    margin-top: 6px;
+}
+.content-c .server{
+    float: left;
+    width: 245px;
+    height: 140px;
+    margin-right: 5px;
+    background-color: #F7F7F7;
+}
+.content-c .server .code {
+    float: left;
+    width: 122.5px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+}
+.content-c .server .code .m-code{
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    color: #454545;
+    font-size: 14px;
+}
+.content-c .server .code .m-code i{
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    margin-left: -12.5px;
+    background: url('../images/m-code.png') no-repeat center / contain;
+}
+.content-c .server .old-new{
+    float: right;
+    width: 122.5px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+}
+.content-c .server .old-new .o-to-n {
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    color: #454545;
+    font-size: 14px;
+}
+.content-c .server .old-new .o-to-n i {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    margin-left: -12.5px;
+    background: url('../images/old-to-new.png') no-repeat center / contain;
+}
+.content-c .server .protect{
+    float: left;
+    width: 122.5px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+}
+.content-c .server .protect .pro {
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    color: #454545;
+    font-size: 14px;
+}
+.content-c .server .protect .pro i {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    margin-left: -12.5px;
+    background: url('../images/protect.png') no-repeat center / contain;
+}
+.content-c .server .search{
+    float: right;
+    width: 122.5px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+}
+.content-c .server .search .sear {
+    position: relative;
+    display: block;
+    padding-top: 15px;
+    color: #454545;
+    font-size: 14px;
+}
+.content-c .server .search .sear i {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 15px;
+    width: 25px;
+    height: 25px;
+    margin-left: -12.5px;
+    background: url('../images/search.png') no-repeat center / contain;
+}
+.content-c .ad a{
+    float: left;
+    display: block;
+    width: 244px;
+    height: 140px;
+    margin-right: 6px;
+}
