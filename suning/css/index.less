@@ -1,0 +1,552 @@
+// 书写首页的 css 样式
+
+// 导入公共的 common.less 文件
+@import "common.less";
+
+// body 的样式
+body {
+  min-width: 320px;
+  width: 15rem;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, STHeiTi, sans-serif;
+  background: #F2F2F2;
+}
+
+ol,
+li,
+h1,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+// 后续的尺寸都需要使用 rem 单位
+@baseFont: 50px;
+
+// top-banner 区域
+.top-banner {
+  position: relative;
+  width: (750rem / @baseFont);
+  height: (100rem / @baseFont);
+
+  .top-banner-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .close {
+    position: absolute;
+    left: 0.1rem;
+    top: 0.5rem;
+    width: (50rem / @baseFont);
+    height: (50rem / @baseFont);
+    background: url(../images/close.png) no-repeat center center;
+    background-size: (30rem / @baseFont) auto;
+  }
+}
+
+// header 区域
+.header {
+  width: (750rem / @baseFont);
+  height: (180rem / @baseFont);
+  background-color: #ffdb47;
+  margin-bottom: 0;
+
+  .header-top {
+    display: flex;
+    width: (682rem / @baseFont);
+    height: (88rem / @baseFont);
+    padding: 0(34rem / @baseFont);
+    justify-content: space-between;
+    align-items: center;
+
+    .classify {
+      img {
+        display: block;
+        width: (36rem / @baseFont);
+        height: (60rem / @baseFont);
+      }
+    }
+
+    .ad {
+      img {
+        display: block;
+        width: (450rem / @baseFont);
+        height: (55rem / @baseFont);
+        margin-right: (50rem / @baseFont);
+      }
+    }
+
+    .login {
+      img {
+        display: block;
+        width: (36rem / @baseFont);
+        height: (60rem / @baseFont);
+      }
+    }
+  }
+
+  .search {
+    position: relative;
+    width: (750rem / @baseFont);
+    height: (92rem / @baseFont);
+    padding: 0 (24rem / @baseFont);
+    box-sizing: border-box;
+
+    a {
+      position: absolute;
+      top: 0;
+      left: (24rem / @baseFont);
+      width: (702rem / @baseFont);
+      height: (88rem / @baseFont);
+    }
+
+    i {
+      position: absolute;
+      left: (42rem / @baseFont);
+      top: (26rem / @baseFont);
+      width: (36rem / @baseFont);
+      height: (36rem / @baseFont);
+      background: url(../images/search_btn.png) no-repeat 0 0;
+      background-size: (36rem / @baseFont) auto;
+    }
+
+    form {
+      display: flex;
+      width: (702rem / @baseFont);
+      height: (88rem / @baseFont);
+      align-items: center;
+
+      input {
+        width: (702rem / @baseFont);
+        height: (64rem / @baseFont);
+        padding: (3rem / @baseFont) (20rem / @baseFont) 0 (65rem / @baseFont);
+        border: 0;
+        border-radius: (32rem / @baseFont);
+        box-sizing: border-box;
+        font-size: 0.56rem;
+        line-height: (64rem / @baseFont);
+      }
+    }
+  }
+}
+
+// banner 区域
+.banner {
+  width: (750rem / @baseFont);
+  height: (260rem / @baseFont);
+  background: url(../images/banner_bg.png) no-repeat 0 0;
+  background-size: (750rem / @baseFont) auto;
+
+  .wrapper {
+    position: relative;
+    width: (702rem / @baseFont);
+    height: (260rem / @baseFont);
+    margin: 0 auto;
+    overflow: hidden;
+
+    ul {
+      position: relative;
+      width: (2000rem / @baseFont);
+      height: (260rem / @baseFont);
+      margin: 0;
+
+      li {
+        position: absolute;
+        left: (702rem / @baseFont);
+        top: 0;
+        width: (702rem / @baseFont);
+        height: (260rem / @baseFont);
+        border-radius: (24rem / @baseFont);
+        overflow: hidden;
+
+        &.current {
+          left: 0;
+        }
+
+        img {
+          width: (702rem / @baseFont);
+          height: (260rem / @baseFont);
+        }
+      }
+    }
+
+    ol {
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      margin-left: (-40rem / @baseFont);
+      left: 50%;
+      bottom: (10rem / @baseFont);
+      width: 100%;
+      height: (10rem / @baseFont);
+
+      li {
+        float: left;
+        padding: 0;
+        margin: 0;
+        width: (10rem / @baseFont);
+        height: (10rem / @baseFont);
+        margin: 0 (5rem / @baseFont);
+        border-radius: (10rem / @baseFont);
+        background-color: rgba(0, 0, 0, 0.3);
+
+        &.current {
+          width: (13rem / @baseFont);
+          margin: 0 (1rem / @baseFont);
+          background-color: #fff;
+        }
+      }
+
+    }
+  }
+}
+
+// 广告部分
+.current-ad {
+  width: 100%;
+  height: (232.5rem / @baseFont);
+  margin-top: (30rem / @baseFont);
+
+  img {
+    float: left;
+    width: 33.333333%;
+    height: 100%;
+  }
+}
+
+// nav 部分
+.nav {
+  width: (750rem / @baseFont);
+  height: (308rem / @baseFont);
+
+  a {
+    float: left;
+    width: (150rem / @baseFont);
+    height: (142rem / @baseFont);
+    text-decoration: none;
+    color: #666;
+    font-size: (22rem / @baseFont);
+
+    img {
+      display: block;
+      width: (84rem / @baseFont);
+      height: (84rem / @baseFont);
+      margin: (24rem / @baseFont) (33rem / @baseFont) 0;
+    }
+
+    p {
+      height: (28rem / @baseFont);
+      margin-top: (5rem / @baseFont);
+      line-height: (28rem / @baseFont);
+      text-align: center;
+    }
+  }
+}
+
+// 特色模块部分
+.cha {
+  height: (680rem / @baseFont);
+  margin: (45rem / @baseFont) (20rem / @baseFont) 0;
+  box-sizing: content-box;
+  border-radius: (10rem / @baseFont);
+  background-color: #fff;
+
+  .left-part {
+    float: left;
+    height: (500rem / @baseFont);
+    width: 50%;
+    border-right: (2rem / @baseFont) solid #f2f2f2;
+
+    .seckill {
+      margin-left: (20rem / @baseFont);
+      height: (250rem / @baseFont);
+
+      .seckill-title {
+        overflow: hidden;
+
+        h1 {
+          float: left;
+          padding-top: (20rem / @baseFont);
+          margin-right: (10rem / @baseFont);
+          font-size: (30rem / @baseFont);
+          font-weight: 700;
+        }
+
+        span,
+        i {
+          float: left;
+          font-size: (12rem / @baseFont);
+          margin-top: (22rem / @baseFont);
+          font-weight: 600;
+        }
+
+        span {
+          padding: 0 (3rem / @baseFont);
+          background-color: #FFCC00;
+          border-radius: (7rem / @baseFont);
+        }
+
+        i {
+          font-weight: normal;
+          padding: 0 (3rem / @baseFont);
+          font-style: normal;
+        }
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: (20rem / @baseFont);
+        color: #999;
+      }
+
+      .seckill-goods {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          img {
+            width: (106rem / @baseFont);
+            height: (106rem / @baseFont);
+          }
+
+          a {
+            margin: 0;
+            text-decoration: none;
+            line-height: (25rem / @baseFont);
+          }
+
+          .yuan {
+            font-size: (25rem / @baseFont);
+            color: #F50;
+          }
+
+          .jiao {
+            font-size: (20rem / @baseFont);
+            color: #F50;
+          }
+        }
+      }
+    }
+
+    .new-goods {
+      overflow: hidden;
+      margin-left: (20rem / @baseFont);
+      height: (250rem / @baseFont);
+
+      h1 {
+        padding-top: (20rem / @baseFont);
+        margin-right: (10rem / @baseFont);
+        font-size: (30rem / @baseFont);
+        font-weight: 700;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: (20rem / @baseFont);
+        color: #999;
+      }
+
+      li {
+        float: left;
+        width: 50%;
+        text-align: center;
+      }
+
+      img {
+        width: (115rem / @baseFont);
+        height: (115rem / @baseFont);
+        text-align: center;
+      }
+    }
+  }
+
+  .right-part {
+    float: left;
+    height: (500rem / @baseFont);
+    width: 49%;
+
+    .discount {
+      margin-left: (20rem / @baseFont);
+      height: (250rem / @baseFont);
+
+      h1 {
+        padding-top: (20rem / @baseFont);
+        margin-right: (10rem / @baseFont);
+        font-size: (30rem / @baseFont);
+        font-weight: 700;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: (20rem / @baseFont);
+        color: #999;
+      }
+
+      .discount-goods {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          img {
+            width: (115rem / @baseFont);
+            height: (115rem / @baseFont);
+            text-align: center;
+          }
+
+          span {
+            display: block;
+            height: (54rem / @baseFont);
+            width: 100%;
+            padding: 0;
+            margin: (-25rem / @baseFont) 0 0;
+            z-index: 99;
+            line-height: (74rem / @baseFont);
+            text-align: center;
+            font-size: (20rem / @baseFont);
+            background: url("../images/dialog.png") no-repeat 0 0;
+            background-size: (150rem / @baseFont) auto;
+          }
+        }
+      }
+    }
+
+    .pingou {
+      margin-left: (20rem / @baseFont);
+      height: (250rem / @baseFont);
+
+      h1 {
+        padding-top: (20rem / @baseFont);
+        margin-right: (10rem / @baseFont);
+        font-size: (30rem / @baseFont);
+        font-weight: 700;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: (20rem / @baseFont);
+        color: #999;
+      }
+
+      .pingou-goods {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          img {
+            width: (115rem / @baseFont);
+            height: (115rem / @baseFont);
+            text-align: center;
+          }
+
+          span {
+            display: block;
+            height: (54rem / @baseFont);
+            width: 100%;
+            padding: 0;
+            margin: (-25rem / @baseFont) 0 0;
+            z-index: 99;
+            line-height: (74rem / @baseFont);
+            text-align: center;
+            font-size: (20rem / @baseFont);
+            background: url("../images/dialog.png") no-repeat 0 0;
+            background-size: (150rem / @baseFont) auto;
+          }
+        }
+      }
+    }
+  }
+
+  .recommend {
+    float: left;
+    height: (180rem / @baseFont);
+    width: 100%;
+    border-top: (2rem / @baseFont) solid #f2f2f2;
+    text-align: center;
+    padding-top: (20rem / @baseFont);
+
+    .rec-title {
+      float: left;
+      width: 20%;
+      margin-left: (20rem / @baseFont);
+      margin-top: (20rem / @baseFont);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+
+      h1 {
+        font-size: (25rem / @baseFont);
+        font-weight: 700;
+      }
+
+      span {
+        padding: 0;
+        margin: 0;
+        font-size: (20rem / @baseFont);
+        color: #999;
+      }
+    }
+
+    .channel {
+      float: left;
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        width: (130rem / @baseFont);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        img {
+          width: (100rem / @baseFont);
+          height: (100rem / @baseFont);
+          text-align: center;
+        }
+
+        span {
+          display: block;
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          font-size: (20rem / @baseFont);
+        }
+      }
+    }
+  }
+}
