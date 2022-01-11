@@ -172,9 +172,7 @@ console.log(arr instanceof Array);
 
 ## 对象
 
-### 创建方法
-
-#### 对象字面量：`{}`
+### 对象字面量创建：`{}`
 
 ```JavaScript
 var obj = {
@@ -187,7 +185,7 @@ k: v
 delete obj.k;
 ```
 
-#### new Object()方法
+### new Object()方法创建
 
 ```JavaScript
 var person = new Object();
@@ -200,7 +198,7 @@ var person = new Object();
 - 执行构造函数 目的：给这个新的对象加属性和方法
 - new 会返回这个新对象
 
-#### 工厂函数创建对象
+### 工厂函数创建对象
 
 相当于对`new Object()`方法的一个封装
 
@@ -223,7 +221,7 @@ var person = new Object();
   var p2 = createPerson("ls",19,false);
 ```
 
-#### 自定义构造函数 (常用)
+### 自定义构造函数 (常用)
 
 函数名大写
 
