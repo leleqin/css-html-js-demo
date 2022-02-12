@@ -134,3 +134,84 @@ box.getAttribute('customer_name');
 ver box = document.getElementById('id_name');
 box.style.backgroundColor; // 驼峰命名法
 ```
+
+## DOM事件
+
+### 注册事件
+
+- `element.addEventListener('click',fn)`
+- `element.attachEvent('onclick',fn)`
+
+兼容写法
+
+```JavaScript
+    var btn = document.getElementById('btn');
+
+    addEventListener(btn, 'click', function () {
+        alert('123123');
+    })
+
+    function addEventListener(element, eventName, fn) {
+        if (element.addEventListener) {
+            element.addEventListener(eventName, fn);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventName, fn);
+        } else {
+            element['on' + eventName] = fn;
+        }
+    }
+```
+
+### 移除事件
+
+- `element.removeEventListener('click',fn)`
+- `element.detachEvent('onclick',fn)`
+
+### 事件委托
+
+利用事件冒泡，将子级的事件委托给父级加载
+
+同时，需要利用事件函数的一个 e 参数，内部存储的是事件对象
+
+#### 事件对象
+
+e 在低版本浏览器中有兼容问题，低版本浏览器使用的是 window.event
+
+- `e.eventPhas` 查看事件触发所处阶段
+- `e.target` 获取除法事件的元素
+- `e.srcElement` 获取触发事件的元素，低版本浏览器使用
+- `e.currentTarget` 获取绑定事件的事件源元素
+- `e.type` 获取事件类型
+- `e.clientX/e.clientY` 所有浏览器都支持，鼠标距离浏览器窗口左上角的距离
+- `e.pageX/e.pageY` IE8 以前不支持，鼠标距离整个HTML页面左上顶点的距离
+
+#### 取消默认行为和阻止事件传播
+
+- `e.preventDefault()` 取消默认行为
+- `e.returnValue` 取消默认行为，低版本浏览器使用
+- `e.stopPropagation();` 阻止冒泡，标准方式
+- `e.cancelBubble = true;` 阻止冒泡，IE 低版本，标准中已废弃
+
+## DOM特效
+
+### 偏移量属性
+
+- `offsetParent` 偏移参考父级，距离自己最近的有定位的父级，如果都没有定位参考body(html)
+- `offsetLeft/offsetTop` 偏移位置
+- `offsetWidth/offsetHeight` 偏移大小
+
+![offset]("/notes/assets/dom_offset.jpg")
+
+客户端大小 没有参考父级元素
+
+- `clientLeft/clientTop` 边框区域尺寸，不常用
+- `clientWidth/clientHeight` 边框内部大小
+
+![offset]("/notes/assets/dom_client.jpg")
+
+滚动偏移量
+
+- `scrollLeft/scrollTop` 盒子内部滚动出去的尺寸
+- `scrollWidth/scrollHeight` 盒子内容的宽度和高度
+
+![offset]("/notes/assets/dom_scroll.jpg")
