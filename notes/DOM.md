@@ -200,18 +200,18 @@ e 在低版本浏览器中有兼容问题，低版本浏览器使用的是 windo
 - `offsetLeft/offsetTop` 偏移位置
 - `offsetWidth/offsetHeight` 偏移大小
 
-![offset]("/notes/assets/dom_offset.jpg")
+![offset](https://github.com/leleqin/css-html-js-demo/blob/master/notes/assets/bom_url.jpg)
 
 客户端大小 没有参考父级元素
 
 - `clientLeft/clientTop` 边框区域尺寸，不常用
 - `clientWidth/clientHeight` 边框内部大小
 
-![offset]("/notes/assets/dom_client.jpg")
+![client](https://github.com/leleqin/css-html-js-demo/blob/master/notes/assets/dom_client.jpg)
 
 滚动偏移量
 
 - `scrollLeft/scrollTop` 盒子内部滚动出去的尺寸
 - `scrollWidth/scrollHeight` 盒子内容的宽度和高度
 
-![offset]("/notes/assets/dom_scroll.jpg")
+![offset](https://github.com/leleqin/css-html-js-demo/blob/master/notes/assets/dom_scroll.jpg)
