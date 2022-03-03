@@ -40,7 +40,7 @@
   - 当method是POST时，需要传入数据，在此之前需要设置请求头`.setRequestHeader(header,value)`
 - `.setRequestHeader(header,value)` 设置请求头
   - header 传输数据类型，一般是 "Content-Type"
-  - value 具体数据类型，一般是 "application/x-www-from-urlencoded" 或者 "application/json"
+  - value 具体数据类型，一般是 "application/x-www-form-urlencoded" 或者 "application/json"
 - `.readyState` 返回一个 XMLHttpRequest 代理当前所处的状态
   - 0 UNSENT 代理创建，但是未调用`open()`方法
   - 1 OPENED `open()`方法已调用，建立了连接

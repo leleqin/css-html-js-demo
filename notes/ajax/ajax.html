@@ -10,3 +10,19 @@
 </body>
 </html>
 <script src="./ajax.js"></script>
+<script>
+    var data = {
+        "id": 1
+    }
+
+    var postData = {
+        "name": "mary",
+        'age': 19
+    }
+    // ajax("GET",data,'https://jsonplaceholder.typicode.com/users',function (res){
+    //     console.log(res);
+    // });
+    ajax("POST",postData,'https://jsonplaceholder.typicode.com/users',function (res){
+        console.log(res);
+    });
+</script>
