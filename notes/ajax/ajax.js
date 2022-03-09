@@ -41,6 +41,21 @@ function ajax(method, params, url, done) {
   };
 }
 
+// XMLHttpRequest 2.0
+// var xhr = new XMLHttpRequest();
+// xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+// xhr.onload = function () {
+//   console.log("load", this.readyState);
+// };
+// xhr.onprogress = function (e) {
+//   console.log("progress", this.readyState);
+//   // 在周期性请求过程中，接收到的数据的个数
+//   console.log(e.loaded);
+//   // 接收数据的总个数
+//   console.log(e.total);
+// };
+// xhr.send(null);
+
 // // 1.创建xhr兼容写法
 // var xhr = null;
 // if (window.XMLHttpRequest) {

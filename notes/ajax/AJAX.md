@@ -48,6 +48,29 @@
   - 3 LOADING 响应体下载中，`responseText`已含有部分数据
   - 4 DONE 响应体下载完成，可以直接使用`responseText`
 
+### `XMLHttpRequest2.0`
+
+HTML5 中对 XMLHttpRequest 类型全面升级，更易用，更强大
+
+- `xhr.onload`事件 只在请求完成时触发
+- `xhr.progress`事件 只在请求进行中触发
+
+```JavaScript
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+xhr.onload = function () {
+  console.log("load", this.readyState);
+};
+xhr.onprogress = function (e) {
+  console.log("progress", this.readyState);
+  // 在周期性请求过程中，接收到的数据的个数
+  console.log(e.loaded);
+  // 接收数据的总个数
+  console.log(e.total);
+};
+xhr.send(null);
+```
+
 ## 响应数据格式
 
 ### XML
@@ -94,3 +117,49 @@
 
 - `JSON.stringify(obj)` 对象转json类型的字符串
 - `JSON.parse(str)` json类型的字符串转对象
+
+## json-server
+
+搭建本地的数据接口，创建json文件，便于调试调用
+
+[json-server](https://github.com/typicode/json-server)
+
+## 使用jQuery封装的Ajax
+
+使用jQuery的封装Ajax方法，函数，不刷新浏览器从服务器加载数据。
+
+```JavaScript
+// 在要使用 jQuery 封装的 Ajax 方法里引入 jQuery 的 js 文件
+
+<script src="jquery-1.12.4.min.js"></script>
+```
+
+详见 `ajax_jquery.js`
+
+## 使用axios封装的Ajax
+
+Ajax封装库
+
+详见 `ajax_axios.js`
+
+### 拦截器
+
+#### 使用拦截器，对请求进行拦截处理
+
+```JavaScript
+axios.interceptors.request.use(function (config) {
+  config.params = {
+    id: 2
+  }
+  config.baseURL = "http://localhost:3000"
+  return config
+})
+```
+
+#### 使用拦截器，对响应进行拦截处理
+
+```JavaScript
+axios.interceptors.response.use(function (response) {
+      return response.data;
+})
+```
