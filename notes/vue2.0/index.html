@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ num }}</p>
+        <input type="button" @click = 'increase'  value="加">
+    </div>
+
+    <!-- 自定义指令 -->
+    <div id="app2">
+        <input type="text" v-focus.a.b = '100 + 1'>
+    </div>
+
+    <div id="app3">
+        <input type="text" v-focus.a.b = '100 + 1'>
+    </div>
+
+    <!-- 过滤器 -->
+    <div id="filter">
+        <!-- value 为 filterA 的第一个参数 -->
+        <p v-bind:title="value | filterA">过滤器</p>
+        <p>{{ value | filterA | filterB }} </p>
+        <p>{{ value | filterA | filterB | filterC('d','e') }} </p>
+    </div>
+
+    <!-- 局部过滤器 -->
+    <div id="filter2">
+        <p>{{ content | filterD }} </p>
+    </div>
+
+    <!-- 计算属性 -->
+    <div id="computed">
+        <p>{{ sum }} </p>
+    </div>
+    <div id="computed2">
+        <p>{{ sum }} </p>
+    </div>
+
+    <!-- 侦听器 -->
+    <div id="watch">
+        <input type="text" v-model="value">
+    </div>
+<script src="lib/vue.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
