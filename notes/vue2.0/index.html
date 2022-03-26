@@ -7,9 +7,160 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- vue实例 -->
     <div id="app">
         <p>{{ num }}</p>
+        <!-- vue指令 v-once -->
+        <p v-once>一次执行 {{ num }}</p>
         <input type="button" @click = 'increase'  value="加">
+        <!-- v-text -->
+        <p v-text = 'content'>原始内容</p>
+        <!-- v-html -->
+        <p v-html = 'content'>原始html</p>
+        <!-- 属性绑定 v-bind -->
+        <p v-bind:title = 'title'>绑定</p>
+        <!-- v-bind 简写 -->
+        <p :class="classNum + classNum" class="b" >简写绑定</p>
+        <!-- v-bind 多属性绑定 -->
+        <p v-bind = 'obj'>多属性绑定</p>
+        <!-- class的特殊处理绑定 -->
+        <p :class = '{ a: isShowA, b: isShowB, "c-c": true }'>class的特殊处理绑定1</p>
+        <p :class = '[ "a", {b: isShowA}, "c" ]'>class的特殊处理绑定2</p>
+        <!-- style绑定 -->
+        <p :style = '[styleObj,styleObj2]' style="height: 300px;">style绑定</p>
+
+        <!-- v-for指令 -->
+        <ul>
+            <li v-for="(item,index) in liArr" :key = 'index'><a href="#">{{ item }}</a><span>index: {{index}}</span></li>
+            <!-- 只有一个值，默认是map的value -->
+            <li v-for="map in liMap"><span>{{ map }}</span></li>
+            <li v-for="(value,key,index) in liMap"><span>key: {{ key }}  value: {{ value }} index: {{ index }}</span></li>
+        </ul>
+
+        <div style="border: 1px solid yellow;margin-bottom: 20px;padding-left: 10px;">
+           <h3>v-for key 属性的重要性</h3> 
+            <!-- v-show 控制元素是否显示 -->
+            <ul v-show="isShowKey">
+                <li v-for="(item,index) in liArr" >输入框{{ item }}: <input type="text"></li>
+            </ul>
+            <ul v-show="!isShowKey">
+                <!-- key需要是唯一的不会改变的值，数组的index值，会变 -->
+                <li v-for="(item,index) in liArrKey" :key = 'item.id'>输入框{{ item.name }}: <input type="text"></li>
+            </ul>
+            <input type="button" value="反转数组" @click = 'reverse'>
+            <input type="button" :value= 'bindKeyContent'  @click = 'isBindKey'>
+
+            <h4>template标签整体操作元素</h4>
+            <template v-for="item in liArr">
+                <p> arr 内容 {{ item }}</p>
+            </template>
+        </div>
+
+        <div style="border: 1px solid rgba(122, 9, 104, 0.589);margin-bottom: 20px;padding: 20px;">
+            <h3>v-if</h3>
+            <p v-if ='isShowA'> if </p>
+            <p v-else-if ='isShowB'> else if </p>
+            <p v-else> else </p>
+
+            <!-- 若没有key，input不会刷新 -->
+            <label v-if = 'isShow' :key="'username'"> 用户名 <input type="text"></label>
+            <label v-if = '!isShow' :key="'password'"> 密码 <input type="text"></label>
+            <input type="button" value="提交" @click="submit(content,$event)">
+        </div>
+
+        <!-- v-model指令 -->
+        <div style="border: 1px solid rgba(49, 180, 16, 0.589);margin-bottom: 20px;padding: 20px;">
+            <h3> v-model 指令</h3>
+            
+            <h4> 输入框双向绑定 </h4>
+            <p>input输入框内容: {{ modelText1 }}</p>
+            <input type="text" v-model="modelText1">
+            <p>textarea输入框内容: {{ modelText2 }}</p>
+            <textarea cols="30" rows="10" v-model="modelText2"></textarea>
+            
+            <h4>单选按钮双向绑定 radio值: {{ radioValue }}</h4>
+            <input type="radio" value="女" id="w" v-model="radioValue">
+            <label for="w">女</label>
+            <input type="radio" value="男" id="m" v-model="radioValue">
+            <label for="m">男</label>
+
+            <h4>复选框双向绑定</h4>
+            <h5>单个复选框的value: {{ checkbox1 }}</h5>
+            <input type="checkbox" id="item" value="选项内容" v-model='checkbox1'>
+            <label for="item">选项</label>
+            <h5>多个复选框的value: {{ checkbox2 }}</h5>
+            <input type="checkbox"  id="c1" value="c1" v-model="checkbox2">
+            <label for="c1">check 1</label>
+            <input type="checkbox"  id="c2" value="c2" v-model="checkbox2">
+            <label for="c2">check 2</label>
+            <input type="checkbox"  id="c3" value="c3" v-model="checkbox2">
+            <label for="c3">check 3</label>
+            <input type="checkbox"  id="c4" value="c4" v-model="checkbox2">
+            <label for="c4">check 4</label>
+
+            <h4>选择框绑定</h4>
+            <h5>单选的value值为: {{ selectValue1 }}</h5>
+            <select v-model="selectValue1">
+                <option value="">请选择</option>
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+                <option value="3">选项3</option>
+                <option value="4">选项4</option>
+                <option value="5">选项5</option>
+                <option value="6">选项6</option>
+            </select>
+            <h5>多选的value值为: {{ selectValue2 }}</h5>
+            <select v-model="selectValue2" multiple>
+                <option value="1">选项1</option>
+                <option value="2">选项2</option>
+                <option value="3">选项3</option>
+                <option value="4">选项4</option>
+                <option value="5">选项5</option>
+                <option value="6">选项6</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 修饰符 -->
+    <h2>修饰符</h2>
+    <div id="event" style="border: 1px solid rgba(32, 178, 204, 0.589);margin-bottom: 20px;padding: 20px;">
+        <h2>事件修饰符</h2>
+        <h3>1.阻止默认事件行为</h2>
+        <a href="www.baidu.com" @click.prevent="preventFn">a标签</a><br>
+        <a href="www.baidu.com" @click.prevent>a标签阻止默认跳转</a>
+
+        <h3>2.阻止事件传播 事件执行次数：{{ count }}</h3>
+        <div @click="stopEventFn" style="border: 1px solid red; width: 200px;height: 100px;">
+            <input type="button" value="阻止事件传播" @click.stop="stopEventFn">
+            <input type="button" value="不事件传播" @click="stopEventFn"> <br>
+            <a href="www.baidu.com" @click.prevent.stop="stopEventFn">既阻止默认跳转，又阻止传播</a>
+        </div>
+
+        <h3>3.事件只执行一次</h3>
+        <input type="button" value="只执行一次" @click.once = 'onceEventFn'>
+
+        <h2>按键修饰符</h2>
+        <h3>按键码</h3>
+        <input type="text" @keyup.enter="keyupEventFn">
+        <input type="text" @keyup.a="keyupEventFn">
+        <!-- 其中之一满足触发 -->
+        <input type="text" @keyup.a.b="keyupEventFn">
+
+        <h2>系统修饰符 keyup.alt.z</h2>
+        <input type="text" @keyup.alt.z="keyupEventFn">
+
+        <h2>鼠标按键修饰符 </h2>
+        <input type="text" @click.right.prevent="keyupEventFn">
+
+        <h2>v-model修饰符 内容：{{ content }}</h2>
+        <label>trim:</label>
+        <input type="text" v-model.trim="content">
+        <br>
+        <label>lazy:</label>
+        <input type="text" v-model.lazy="content">
+        <br>
+        <label>number:</label>
+        <input type="text" v-model.number="content">
     </div>
 
     <!-- 自定义指令 -->

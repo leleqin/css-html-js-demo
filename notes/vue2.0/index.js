@@ -1,11 +1,61 @@
+// ******************Vue实例********************
 var vm = new Vue({
   el: "#app",
   data: {
     num: 100,
+    content: "<span>文本内容</span>",
+    title: "动态绑定",
+    classNum: "a",
+    isShowA: true,
+    isShowB: false,
+    obj: {
+      title: "多属性绑定",
+      name: "对象绑定",
+    },
+    styleObj: { width: "200px", height: "200px", backgroundColor: "red" },
+    styleObj2: {
+      border: "1px solid black",
+      color: "yellow",
+    },
+    liArr: ["arr1", "arr2", "arr3", "arr4"],
+    liMap: {
+      id: 1,
+      content: "map1",
+    },
+    liArrKey: [
+      { id: 1, name: "value1" },
+      { id: 2, name: "value2" },
+      { id: 3, name: "value3" },
+      { id: 4, name: "value4" },
+    ],
+    isShowKey: false,
+    isShow: false,
+    modelText1: "",
+    modelText2: "",
+    radioValue: "",
+    checkbox1: "",
+    checkbox2: [],
+    selectValue1: "",
+    selectValue2: [],
   },
   methods: {
     increase() {
       this.num++;
+    },
+    reverse() {
+      this.isShowKey ? this.liArr.reverse() : this.liArrKey.reverse();
+    },
+    isBindKey() {
+      this.isShowKey = !this.isShowKey;
+    },
+    submit(content, event) {
+      this.isShow = !this.isShow;
+      console.log("事件", content, event);
+    },
+  },
+  computed: {
+    bindKeyContent() {
+      return this.isShowKey ? "有key" : "没有key";
     },
   },
 });
@@ -13,6 +63,30 @@ var vm = new Vue({
 console.log(vm.$el);
 console.log(vm.$data.num);
 console.log(vm.num);
+
+// ******************修饰符********************
+var eventVue = new Vue({
+  el: "#event",
+  data: {
+    count: 0,
+    content: "",
+  },
+  methods: {
+    preventFn() {
+      alert("a标签点击事件");
+    },
+    stopEventFn() {
+      this.count++;
+    },
+    onceEventFn() {
+      alert("只弹出一次");
+    },
+    keyupEventFn(event) {
+      alert("按键事件");
+      console.log(event);
+    },
+  },
+});
 
 // ******************自定义指令********************
 
