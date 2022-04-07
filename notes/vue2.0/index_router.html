@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>前端路由</title>
+  </head>
+  <body>
+    <div>
+      <!-- hash 方式 -->
+      <!-- <a href="#/">首页</a>
+      <a href="#/category">分类页</a>
+      <a href="#/about">关于页</a> -->
+
+      <!-- history 方式 -->
+      <a href="/">首页</a>
+      <a href="/category">分类页</a>
+      <a href="/about">关于页</a>
+    </div>
+    <div id="box">首页内容</div>
+    <script>
+      var box = document.getElementById("box");
+
+      // 原始方法
+
+      // 注意 window 的 onhashchange 方法
+      //   window.onhashchange = function () {
+      //     // 获取 url 中的 hash
+      //     var hash = location.hash.replace("#", "");
+      //     console.log(hash);
+      //     var str = "";
+      //     switch (hash) {
+      //       case "/":
+      //         str = "首页内容";
+      //         break;
+      //       case "/category":
+      //         str = "分类内容";
+      //         break;
+      //       case "/about":
+      //         str = "关于内容";
+      //         break;
+      //     }
+      //     box.innerText = str;
+      //   };
+
+      // 封装 hash
+      //   var router = {
+      //     routers: {},
+      //     route: function (path, callback) {
+      //       this.routers[path] = callback;
+      //     },
+      //     // 初始化路由
+      //     init() {
+      //       var that = this;
+      //       window.onhashchange = function () {
+      //         var path = location.hash.replace("#", "");
+      //         that.routers[path] && that.routers[path]();
+      //       };
+      //     },
+      //   };
+
+      //   router.init();
+
+      //   router.route("/", function () {
+      //     box.innerText = "首页内容";
+      //   });
+      //   router.route("/category", function () {
+      //     box.innerText = "分类内容";
+      //   });
+      //   router.route("/about", function () {
+      //     box.innerText = "关于内容";
+      //   });
+
+      // history 方式
+      var router = {
+        routers: {},
+        route(path, callback) {
+          this.routers[path] = callback;
+        },
+        go(path) {
+          // 第一个参数是 状态信息
+          // 第二个参数是 浏览器 title 目前浏览器不支持 可传 null 或 ''
+          // 第三个参数是 URL 路由路径
+          history.pushState({ path: path }, null, path);
+          this.routers[path] && this.routers[path]();
+        },
+        init() {
+          var that = this;
+          // 监听 popState 事件，可以前进后退
+          window.addEventListener("popstate", function (e) {
+            console.log(e);
+            // state 为上述 pushState 的第一个参数的数据
+            that.routers[e.state.path] && that.routers[e.state.path]();
+          });
+        },
+      };
+
+      router.init();
+
+      // 获取 URL
+      var aList = document.querySelectorAll("a");
+      aList.forEach(function (item) {
+        // 监听 a 标签事件
+        item.addEventListener("click", function (event) {
+          // 这个路径是完整路径
+          //   console.log(this.href);
+          var href = item.getAttribute("href");
+          console.log(href);
+          router.go(href);
+
+          // 清除默认事件
+          event.preventDefault();
+        });
+      });
+
+      router.route("/", function () {
+        box.innerText = "首页内容";
+      });
+      router.route("/category", function () {
+        box.innerText = "分类内容";
+      });
+      router.route("/about", function () {
+        box.innerText = "关于内容";
+      });
+    </script>
+  </body>
+</html>

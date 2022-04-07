@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue router</title>
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/">首页</router-link>
+      <!-- 通过 v-bind 绑定也会执行 $router 的初始方法 -->
+      <router-link :to="{ path: '/user'}">用户页</router-link>
+
+      <!-- 设置动态路由 -->
+      <router-link to="/about/1">关于页1</router-link>
+      <router-link to="/about/2">关于页2</router-link>
+      <router-link to="/about/3">关于页3</router-link>
+
+      <!-- 路由传参处理 单个参数传值 -->
+      <router-link to="/category/1">分类1</router-link>
+      <router-link to="/category/2">分类2</router-link>
+      <router-link to="/category/3">分类3</router-link>
+
+      <!-- 路由传参处理 多个参数传值 -->
+      <router-link to="/my/1">我的1</router-link>
+      <router-link to="/my/2">我的2</router-link>
+      <router-link to="/my/3">我的3</router-link>
+
+      <!-- 命名路由 -->
+      <router-link :to="{ name: 'nameinfo', params:{ id:3,a:1,b:2}}"
+        >命名路由</router-link
+      >
+
+      <!-- 路由传参处理 静态值 -->
+      <router-view name="sidebar2"></router-view>
+
+      <!-- 命名视图 -->
+      <router-view name="sidebar"></router-view>
+
+      <!-- 默认名为 default -->
+      <router-view></router-view>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <!-- 路由嵌套 -->
+      <router-link to="/routenest">路由嵌套</router-link>
+
+      <router-view name="routenest"></router-view>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+    <script>
+      // 创建对应路由的 component
+      var Index = {
+        template: `<div> 首页 </div>`,
+      };
+      var SideBar = {
+        template: `<div> 侧边栏 </div>`,
+      };
+
+      var SideBar2 = {
+        props: ["a", "b"],
+        template: `<div> 侧边栏2 {{ a }}  {{ b }} </div>`,
+      };
+
+      var User = {
+        template: `<div> 用户页 </div>`,
+      };
+
+      var About = {
+        template: `<div> 关于第 {{ $route.params.id }} 页 </div>`,
+        // 由于组件没有重新创建，所以生命周期钩子只会执行一次
+        created() {
+          console.log("创建了组件的实例");
+        },
+        // 侦听路由参数
+        watch: {
+          $route(route) {
+            console.log(route.params.id);
+          },
+        },
+      };
+
+      // 路由传参处理
+      var Category = {
+        // 接收 props
+        props: ["id"],
+        template: `<div> 分类 {{ id }} 页 </div>`,
+      };
+
+      var My = {
+        // 接收 props
+        props: ["id"],
+        template: `<div> 我的第 {{ id }} 页 </div>`,
+      };
+
+      // 路由嵌套
+      var RouteNest = {
+        template: `
+        <div>
+          <h3>第一层路由</h3>
+          <router-link to="/routenest/nest1">嵌套1</router-link>
+          <router-link to="/routenest/nest2">嵌套2</router-link>
+          <router-view></router-view>
+        </div>
+        `,
+      };
+
+      var RouteNest1 = {
+        template: `
+        <div>
+          第二层路由 1
+        </div>
+        `,
+      };
+
+      var RouteNest2 = {
+        template: `
+        <div>
+          第二层路由 2
+          <router-link to="/routenest/nest2/nest2-1">嵌套1</router-link>
+          <router-view></router-view>
+        </div>
+        `,
+      };
+
+      var RouteNest2_2 = {
+        template: `
+        <div>
+          2-2
+        </div>
+        `,
+      };
+
+      // 命名路由
+      var PathName = {
+        template: `
+        <div>
+          命名路由：{{ $route.params }}
+        </div>
+        `,
+      };
+
+      // 定义路由
+      var routes = [
+        {
+          path: "/",
+          // 多个视图
+          components: {
+            default: Index,
+            sidebar: SideBar,
+          },
+        },
+        { path: "/user", component: User },
+        {
+          // 动态路由
+          path: "/about/:id",
+          component: About,
+        },
+
+        // 路由传参处理 单个组件传值
+        {
+          path: "/category/:id",
+          component: Category,
+          // 通过 props 属性传到相应的组件中
+          props: true,
+        },
+        // 路由传参处理 多个组件传值
+        {
+          path: "/my/:id",
+          components: {
+            default: My,
+            sidebar: SideBar,
+            // 静态数据传值
+            sidebar2: SideBar2,
+          },
+          // 通过 props 属性传到相应的组件中
+          props: {
+            default: true,
+            sidebar: false,
+            sidebar2: { a: "静态值1", b: "静态值2" },
+          },
+        },
+
+        // 路由嵌套
+        {
+          path: "/routenest",
+          components: {
+            routenest: RouteNest,
+          },
+          children: [
+            {
+              // 不需要/
+              path: "nest1",
+              component: RouteNest1,
+            },
+            {
+              path: "nest2",
+              component: RouteNest2,
+              children: [
+                {
+                  path: "nest2-1",
+                  component: RouteNest2_2,
+                },
+              ],
+            },
+          ],
+        },
+
+        // 命名路由
+        {
+          path: "/pathname/:id/nameinfo",
+          name: "nameinfo",
+          component: PathName,
+        },
+      ];
+
+      // 创建 Vue Router 实例
+      var router = new VueRouter({
+        routes,
+      });
+
+      // 创建 Vue 实例，将 Vue Router 实例注入
+      var vm = new Vue({
+        el: "#app",
+        router,
+      });
+    </script>
+  </body>
+</html>
