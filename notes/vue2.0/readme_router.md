@@ -26,6 +26,8 @@ Vue Router 是 Vue.js 的官方插件，用来快速实现**单页应用**。
 
 **URL** 与**内容**之间的**映射关系***
 
+[实例代码](https://github.com/leleqin/css-html-js-demo/blob/master/notes/vue2.0/index_router.html)
+
 ### Hash方式
 
 通过 hashchange 事件监听 hash 变化，并进行网页内容更新。
@@ -170,7 +172,7 @@ router.route("/about", function () {
 
 Vue router 提供了用于进行路由设置的组件 `<router-link>` , `<router-view>`
 
-代码参考: [demo](notes\vue2.0\vue_router.html)
+代码参考: [demo](https://github.com/leleqin/css-html-js-demo/blob/master/notes/vue2.0/vue_router.html)
 
 #### `<router-link>`
 
