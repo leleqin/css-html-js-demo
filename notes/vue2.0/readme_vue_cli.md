@@ -37,6 +37,47 @@ Vue官方提供的工具 用来辅助项目的构建。基于Vue.js进行快速�
 - 选择包管理器
 - 创建完成
 
+### 选项说明
+
+- `Babel` js 代码转义工具
+- `CSS Pre-processors` css预处理器选择
+
+### 项目流程
+
+1. 删除默认初始化文件
+2. 根据需求创建文件夹 sre 文件夹下创建
+    - styles 全局样式
+    - utils 工具相关模块
+    - services 接口模块功能
+3. 导入要使用的 UI 库 `npm i element-ui -S`
+    - 在 `main.js` 中完整引入 这样所有的组件都可以使用
+    - `import ElementUI from "element-ui";`
+    - `Vue.use(ElementUI);` 将 Element 注册为 Vue 插件
+4. 样式处理 均在 styles 下创建
+    - 放置样式变量的文件 `variables.scss`
+    - 创建一个 `index.scss` 方式全局的样式 将 `index.scss` 引入 `main.js` 中
+    - `reset.scss` 重置样式文件
+    - `mixin.scss` 复用样式文件
+    - 由于 `variables.scss` 会在多个地方用到，可以配置全局共享 [文档见](https://cli.vuejs.org/zh/guide/css.html#%E5%90%91%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8-loader-%E4%BC%A0%E9%80%92%E9%80%89%E9%A1%B9)
+    - `@` 代表的是 src
+    - `~` 根目录
+5. 路由处理 目录套文件的方式 在 views 目录下创建
+    - 目录下需要有个初始的 `index.vue`
+    - 在 router 目录下 `index.js` 配置路由
+6. 路由优化 按需引用文件 路由懒加载 [文档见](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
+
+```JavaScript
+// 路由规则
+// webpackChunkName 打包后的资源名
+const routes = [
+  {
+    path: "/login",
+    name: "login",
+    component: import(/* webpackChunkName: "index" */ "@/views/login/index"),
+  },
+];
+```
+
 ## 目录文件
 
 ```text
