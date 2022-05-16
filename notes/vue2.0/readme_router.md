@@ -114,7 +114,7 @@ var router = {
     window.addEventListener("popstate",function(e) {
       console.log(e);
       // state 为上述 pushState 的第一个参数的据
-      that.routers[e.state.path] && thatrouter[e.state.path]();
+      that.routers[e.state.path] && that.routers[e.state.path]();
     });
   },
 };

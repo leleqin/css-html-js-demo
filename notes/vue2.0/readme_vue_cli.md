@@ -44,6 +44,8 @@ Vue官方提供的工具 用来辅助项目的构建。基于Vue.js进行快速�
 
 ### 项目流程
 
+[项目示例](https://github.com/leleqin/information-manage-fed)
+
 1. 删除默认初始化文件
 2. 根据需求创建文件夹 sre 文件夹下创建
     - styles 全局样式
@@ -66,17 +68,50 @@ Vue官方提供的工具 用来辅助项目的构建。基于Vue.js进行快速�
     - 在 router 目录下 `index.js` 配置路由
 6. 路由优化 按需引用文件 路由懒加载 [文档见](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
 
-```JavaScript
-// 路由规则
-// webpackChunkName 打包后的资源名
-const routes = [
-  {
-    path: "/login",
-    name: "login",
-    component: import(/* webpackChunkName: "index" */ "@/views/login/index"),
-  },
-];
-```
+    ```JavaScript
+    // 路由规则
+    // webpackChunkName 打包后的资源名
+    const routes = [
+    {
+        path: "/login",
+        name: "login",
+        component: import(/* webpackChunkName: "index" */ "@/views/login/index"),
+    },
+    ];
+    ```
+
+7. 安装 axios， 并在 utils 目录下封装请求
+    - `npm install axios`
+
+    ```JavaScript
+    import axios from "axios";
+
+    // create 创建 axios 实例
+    const request = axios.create({
+    timeout: 5000,
+    });
+
+    function getBaseURL(url) {
+    if (url.startsWith("/boos")) {
+        return "http://eduboss.lagounews.com";
+    } else {
+        return "http://edufront.lagounews.com";
+    }
+    }
+
+    // 请求拦截
+    request.interceptors.request.use(function (config) {
+    // 通过求情的 url 判断 baseUrl
+    config.baseURL = getBaseURL(config.url);
+    console.log(config);
+    return config;
+    });
+
+    export default request;
+    ```
+
+8. Postman 接口测试
+    - [下载 Postman](postman.com/downloads/)
 
 ## 目录文件
 
