@@ -51,7 +51,7 @@ Object.defineProperty(obj, 'age', {
 
 ```
 
-### 使用 `Object.defineProperty` 简单实现响应式
+#### 使用 `Object.defineProperty` 简单实现响应式
 
 给定义的 data 对象中的每个元素，通过 `Object.defineProperty` 数据劫持的方式 将 data 的属性设置为 getter/setter。在 set 方法中对页面元素做修改。
 
@@ -80,6 +80,40 @@ Object.keys(data).forEach((key) => {
             document.getElementById("app").textContent = data[key];
         },
     });
+});
+```
+
+### Vue3.x 基于 ES6 的 Proxy 实现
+
+#### Proxy
+
+用于创建一个对象的代理，从而实现基本操作的拦截和自定义。比如赋值，查找。
+
+```JavaScript
+let data = {
+    name: 'Mary',
+    age: 18,
+    arr: [1, 2, 3],
+    obj: {
+        name: 'Alisa',
+        age: 20,
+    }
+}
+
+// 第一个参数传的是要代理的对象
+// 第二个参数配置在执行各种操作时代理 p 的行为
+const p = new Proxy(data, {
+    // 读取操作的捕捉器
+    // 第一个参数是 目标对象
+    // 第二个参数是 被获取的属性名
+    // 第三个参数是 Proxy 或者被继承的 Proxy
+    get (target, property, receiver) {
+        return target[property];
+    },
+    // value 要设置的值
+    set (target, property, value, receiver) {
+        target[property] = value;
+    }
 });
 ```
 
