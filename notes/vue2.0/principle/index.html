@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue2.0 响应式简单模拟</title>
+  </head>
+  <body>
+    <h3>Vue2.0 响应式简单模拟</h3>
+    <div id="app"></div>
+    <script>
+      // data 数据对象
+      let data = {
+        name: "Mary",
+        age: 18,
+        arr: [1, 2, 3],
+        obj: {
+          sex: "man",
+        },
+      };
+      // vue 对象
+      let vm = {};
+
+      const createReactive = (function () {
+        // 改变原数组的方法
+        const arrMethods = [
+          "push",
+          "pop",
+          "unshift",
+          "shift",
+          "splice",
+          "sort",
+          "reverse",
+        ];
+        // 存放处理结果的对象，替换掉数组实例的原型指针 __proto__
+        const customProto = {};
+        // 保证数组能使用除上面处理的其他方法
+        customProto.__proto__ = Array.prototype;
+        // 处理数组方法
+        arrMethods.forEach((method) => {
+          customProto[method] = function () {
+            // 确保原始功能可以使用 this 为数组实例
+            const result = Array.prototype[method].apply(this, arguments);
+            // 使用数组方法更新视图
+            document.getElementById("app").textContent = this;
+            return result;
+          };
+        });
+
+        return function (data, vm) {
+          // 通过数据劫持的方式，vm 实例对象可以直接操作 data 的数据
+          Object.keys(data).forEach((key) => {
+            if (Array.isArray(data[key])) {
+              data[key].__proto__ = customProto;
+            } else if (typeof data[key] === "object" && data[key] !== null) {
+              vm[key] = {};
+              createReactive(data[key], vm[key]);
+              return;
+            }
+            // 通过数据劫持的方式，将 data 的属性设置为 getter/setter
+            Object.defineProperty(vm, key, {
+              get() {
+                return data[key];
+              },
+              set(newVale) {
+                data[key] = newVale;
+                document.getElementById("app").textContent = data[key];
+              },
+            });
+          });
+        };
+      })();
+
+      createReactive(data, vm);
+    </script>
+  </body>
+</html>
