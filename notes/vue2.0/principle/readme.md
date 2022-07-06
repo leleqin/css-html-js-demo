@@ -118,3 +118,75 @@ const p = new Proxy(data, {
 ```
 
 ## 设计模式
+
+针对软件设计中普遍存在的各种问题所提出的解决方案
+
+### 观察者模式
+
+目标对象（被观察者 Subject）和多个对象（观察者 Observer）之间的关联；当被观察者对象发生状态改变，观察者做出相应的处理动作。比如：我和我的朋友（观察者）关注着门（被观察者），当门响了，我去开门，我的朋友去倒水。
+
+适合组件内操作
+
+#### 简单代码实现
+
+```JavaScript
+// 被观察者对象
+// 1. 添加所有观察者
+// 2. 能够通知观察者
+class Subject {
+  constructor() {
+    // 观察者列表
+    this.observers = [];
+  }
+  // 添加观察者
+  addObservers(observer) {
+    if (observer && observer.update) {
+      this.observers.push(observer);
+    }
+  }
+  // 通知观察者
+  notify() {
+    this.observers.forEach((o) => o.update());
+  }
+}
+// 观察者对象
+// 观察事物变化，做出相应的改变
+class Observer {
+  update() {
+    console.log("观察者改变，做出相应动作");
+  }
+}
+let s = new Subject();
+let o1 = new Observer();
+let o2 = new Observer();
+s.addObservers(o1);
+s.addObservers(o2);
+s.notify();
+```
+
+### 发布-订阅模式
+
+观察者模式解耦的进阶版本。
+
+在发布者（Publisher）和订阅者（Subscriber）之间添加消息中心（Dependence），所有的消息都通过消息中心管理。也就是找个第三方，发布者和订阅者不会直接联系，从而实现了两者之间的解耦。
+
+适合消息类型复杂的情况。
+
+#### 代码实现
+
+```JavaScript
+// 消息中心
+let eventBus = new Vue();
+
+// 注册事件 订阅者
+eventBus.$on("dataChange", () => {
+    console.log("事件处理功能1");
+});
+
+eventBus.$on("dataChange", () => {
+    console.log("事件处理功能2");
+});
+
+// 触发事件 发布者
+eventBus.$emit("dataChange");
+```
